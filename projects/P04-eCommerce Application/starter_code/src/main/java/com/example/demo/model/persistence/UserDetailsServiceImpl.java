@@ -1,29 +1,30 @@
-package com.example.demo.jwt;
+package com.example.demo.model.persistence;
 
+import com.example.demo.model.persistence.repositories.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.example.demo.model.persistence.repositories.UserRepository;
-
+//import com.example.demo.model.persistence.User;
 
 import static java.util.Collections.emptyList;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private UserRepository userRepository;
+    private UserRepository applicationUserRepository;
 
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserDetailsServiceImpl(UserRepository applicationUserRepository) {
+        this.applicationUserRepository = applicationUserRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.example.demo.model.persistence.User user = userRepository.findByUsername(username);
-        if (user == null) {
+
+        Userd applicationUser = applicationUserRepository.findByUsername(username);
+        if (applicationUser == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(user.getUsername(), user.getPassword(), emptyList());
+        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
     }
 }

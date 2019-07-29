@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class Userd {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +18,19 @@ public class User {
 	@Column(nullable = false, unique = true)
 	@JsonProperty
 	private String username;
-	private String password;
+
+	//@Size(min = 5, max = 60,message = "{password.size}")
+	private
+	String password;
+//private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//	private String hashedPassword = passwordEncoder.encode(password);
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
 	@JsonIgnore
     private Cart cart;
-	
+
+
 	public Cart getCart() {
 		return cart;
 	}

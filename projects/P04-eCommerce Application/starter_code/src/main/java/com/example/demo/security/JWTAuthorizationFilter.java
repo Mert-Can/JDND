@@ -1,4 +1,4 @@
-package com.example.demo.jwt;
+package com.example.demo.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.example.demo.jwt.SecurityConstants.*;
+import static com.example.demo.security.SecurityConstants.*;
+
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
-
     public JWTAuthorizationFilter(AuthenticationManager authManager) {
         super(authManager);
     }
@@ -56,3 +56,4 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         return null;
     }
 }
+
