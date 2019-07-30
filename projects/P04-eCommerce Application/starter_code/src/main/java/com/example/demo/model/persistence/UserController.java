@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private CartRepository cartRepository;
 
@@ -30,13 +30,13 @@ public class UserController {
 	public ResponseEntity<Userd> findById(@PathVariable Long id) {
 		return ResponseEntity.of(userRepository.findById(id));
 	}
-	
+
 	@GetMapping("/{username}")
 	public ResponseEntity<Userd> findByUserName(@PathVariable String username) {
 		Userd user = userRepository.findByUsername(username);
 		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 	}
-	
+
 	@PostMapping("/create")
 	public ResponseEntity<Userd> createUser(@RequestBody Userd user) {
 		//User user = new User();
@@ -49,5 +49,5 @@ public class UserController {
 
 		return ResponseEntity.ok(user);
 	}
-	
+
 }

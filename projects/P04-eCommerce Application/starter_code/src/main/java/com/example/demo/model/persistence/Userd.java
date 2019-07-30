@@ -14,7 +14,7 @@ public class Userd {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonProperty
 	private long id;
-	
+
 	@Column(nullable = false, unique = true)
 	@JsonProperty
 	private String username;
@@ -24,11 +24,11 @@ public class Userd {
 	String password;
 //private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //	private String hashedPassword = passwordEncoder.encode(password);
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	@JsonIgnore
-    private Cart cart;
+	private Cart cart;
 
 
 	public Cart getCart() {
@@ -62,6 +62,6 @@ public class Userd {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+
 }
