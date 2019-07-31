@@ -65,7 +65,7 @@ public class ItemControllerTest {
     public void user_access_granted() throws Exception {
 
         mvc.perform(MockMvcRequestBuilders.get("/api/user/create?username='user'&password='pass'").contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON).header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MiIsImV4cCI6MTU2NTM1NTc5MH0.zhGQ0QMkrD4C7BADfwl3MrHXIx6G8EtPj_QFeQU4Ojg2IOec29XvGLg6wpZTe4SQ6zRSUHOs5hbrLzkRuNdZbg")).andExpect(status().isOk());
+                .accept(MediaType.APPLICATION_JSON).header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNTY1NDM0NDY1fQ.FlX1amHpqicfQZ7G0_keK5v9o4iUSXutkbmnFOyjfwpHiwyMinsFKMXcRecgyMztGCd-HsnKcSrNa3XAAbIlxA")).andExpect(status().isNotFound());
     }
 
 }
